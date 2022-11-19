@@ -150,11 +150,7 @@ export const ContactUs = () => {
               name="message"
             />
             <Spacer />
-            <CustomButton
-              label="Send"
-              theme="primary"
-              onPress={handleSubmit(onSubmit, onError())}
-            />
+            <CustomButton label="Send" theme="primary" onPress={handleSubmit(onSubmit, onError)} />
             <CustomButton label="Cancel" theme="secondary" onPress={() => handleCancel()} />
           </View>
         </ScrollView>
