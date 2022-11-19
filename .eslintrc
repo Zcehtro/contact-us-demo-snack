@@ -1,0 +1,33 @@
+{
+  "root": true,
+  "extends": "@react-native-community",
+  "parser": "@typescript-eslint/parser",
+  "plugins": ["@typescript-eslint"],
+  "overrides": [
+    {
+      "files": ["*.ts", "*.tsx", "*.js", "*.jsx", "*.json"],
+      "rules": {
+        "prettier/prettier": ["warn", { "endOfLine": "auto" }],
+        "react/react-in-jsx-scope": "off",
+        "no-useless-escape": "off"
+      }
+    },
+    {
+      "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
+      "rules": {
+        "quotes": ["warn", "single"],
+        "comma-dangle": ["error", "always-multiline"]
+      }
+    },
+    {
+      "files": ["*.json"],
+      "rules": {
+        "prettier/prettier": "off",
+        "quotes": "off",
+        "comma-dangle": ["error", "never"],
+        "eol-last": "off",
+        "semi": "off"
+      }
+    }
+  ]
+}
