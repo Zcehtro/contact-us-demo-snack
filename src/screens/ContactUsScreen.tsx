@@ -17,7 +17,12 @@ import { Alert } from '../util';
 import { EMAIL_REGEX, PHONE_REGEX } from '../constants/regex';
 
 export const ContactUs = () => {
-  const { control, handleSubmit, reset } = useForm<IFormContactUs>({
+  const {
+    control,
+    handleSubmit,
+    formState: { errors },
+    reset,
+  } = useForm<IFormContactUs>({
     defaultValues: {
       name: '',
       surname: '',
@@ -40,10 +45,10 @@ export const ContactUs = () => {
     }
   };
 
-  const onError = (error: any) => {
-    const errorMsg = Object.keys(error)
+  const onError = () => {
+    const errorMsg = Object.keys(errors)
       .reduce(
-        (a: string, field: string) => (error[field] ? a + '\n' + error[field].message : a),
+        (a: string, field: string) => (errors[field] ? a + '\n' + errors[field].message : a),
         ''
       )
       .trim();
@@ -148,7 +153,7 @@ export const ContactUs = () => {
             <CustomButton
               label="Send"
               theme="primary"
-              onPress={handleSubmit(onSubmit, (error) => onError(error))}
+              onPress={handleSubmit(onSubmit, onError())}
             />
             <CustomButton label="Cancel" theme="secondary" onPress={() => handleCancel()} />
           </View>
